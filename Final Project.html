@@ -1,0 +1,68 @@
+<!DOCTYPE html><!-- html5 declaration  -->
+<html>
+<head>
+  <title>Web development project--MB</title> <!-- title of the project -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- width=device width= this will fit any device screen -->
+<body>
+<h1 style="color:blue;text-align: center;">Written by Mohamed Badr</h1> <!-- let  heading be in blue -->
+<center> <!-- let photos stay in the center of the page -->
+<div class="slideshow-container" >
+
+<div class="mySlides fade">
+  <img src="mosalah.jpg" style="width: 300px;height: 300px;"> <!-- 1st picture added -->
+</div>
+
+<div class="mySlides fade">
+  <img src="mosalah2.jpg" style="width: 300px;height:300px;"> <!-- 2nd picture added-->
+</div>
+
+<div class="mySlides fade">
+  <img src="mosalah3.jpg" style="width: 300px;height: 300px;"> <!-- 3rd picture added -->
+</div>
+<div class="mySlides fade">
+    <img src="mosalah4.jpg" style="width: 300px;height: 300px;"> <!-- 4th picture added-->
+    </div>
+</div>
+
+</div>
+<div style="text-align:center">
+  <span class="class1"></span> 
+  <span class="class1"></span> 
+  <span class="class1"></span> 
+  <span class="class1"></span>
+</div>
+<div style="text-align:center">	<!-- put what is written in the div at the center of the screen -->
+	<input id="speed" name="speed" type="range" min="1" max="5" value="1"><!-- intialize the min value as 1 maximum value as 5. -->
+	<p style="color: red">Value: <span id="ControlledSpeedValue"></span></p>  <!-- let paragraph  be in red. -->
+  </div>
+  <script>
+      var slider = document.getElementById("speed"); //return Element object that has id called speed whose id matches a specific string called (slider)
+			var output = document.getElementById("ControlledSpeedValue"); //return Element object that has id ControlledSpeedValue that matches specific string called (output)
+      var speed1 = 3;
+			output.innerHTML = slider.value;
+			slider.oninput = function() {
+			output.innerHTML = this.value;
+      speed1 = this.value;
+			}
+var slide_Index = 0;
+show_Slides();//call the function show_Slides
+
+function show_Slides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides"); //call the Element with classname mySlides relatrd to specific string called slides
+    var Number1 = document.getElementsByClassName("class1"); //call the Element with classname class1 related to specific string called Number1
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slide_Index++;
+    if (slide_Index > slides.length) {slide_Index = 1}    
+    for (i = 0; i < Number1.length; i++) {
+        Number1[i].className = Number1[i].className.replace(" active", "");
+    }
+    slides[slide_Index-1].style.display = "block";  
+    Number1[slide_Index-1].className += " active";
+    setTimeout(show_Slides, speed1*1000); //setTimeout is a method sets a timer which executes a function or specified piece of code once the timer expires. .
+}
+  </script>
+</body>
+</html> 
